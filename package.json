@@ -4,13 +4,10 @@
   "description": "Serverless aws-nodejs-typescript template",
   "main": "serverless.ts",
   "scripts": {
-    "prepare": "simple-git-hooks",
-    "lint": "eslint --ext .js,.ts --ignore-path .gitignore . --fix",
-    "format": "prettier --write .",
+    "prepare": "husky install",
+    "lint": "eslint --fix",
+    "format": "prettier --write",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
     "src/**/*.{js,ts}": [
@@ -35,11 +32,11 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
     "prettier": "^2.4.1",
     "serverless": "^2.23.0",
     "serverless-webpack": "^5.3.5",
-    "simple-git-hooks": "^2.6.1",
     "ts-loader": "^8.0.15",
     "ts-node": "^9.1.1",
     "tsconfig-paths": "^3.9.0",
