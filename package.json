@@ -5,8 +5,11 @@
   "main": "serverless.ts",
   "scripts": {
     "prepare": "husky install",
+    "deploy": "npx sls deploy",
     "lint": "eslint --fix",
     "format": "prettier --write .",
+    "local:hello": " npx sls invoke local -f hello --path src/functions/hello/mock.json",
+    "local:hi": " npx sls invoke local -f hi",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "lint-staged": {
@@ -33,6 +36,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^7.0.2",
+    "json-schema-to-ts": "^1.6.4",
     "lint-staged": "^11.1.2",
     "prettier": "^2.4.1",
     "serverless": "^2.23.0",
