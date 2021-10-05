@@ -1,7 +1,7 @@
 import middy from '@middy/core'
 import middyJsonBodyParser from '@middy/http-json-body-parser'
+import { Handler } from 'aws-lambda'
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const middyfy = (handler) => {
+export const middyfy = (handler: Handler): Handler => {
   return middy(handler).use(middyJsonBodyParser())
 }
