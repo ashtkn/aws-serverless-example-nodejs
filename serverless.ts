@@ -30,13 +30,9 @@ const serverlessConfiguration: AWS = {
         statements: [
           {
             Effect: 'Allow',
-            Action: [
-              'dynamodb:Scan',
-              'dynamodb:GetItem',
-              'dynamodb:PutItem',
-            ],
+            Action: ['dynamodb:Scan', 'dynamodb:GetItem', 'dynamodb:PutItem'],
             // Resource: {'Fn::Sub': 'arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/*'},
-            Resource: {'Fn::GetAtt': ['DynamoDbTable', 'Arn']},
+            Resource: { 'Fn::GetAtt': ['DynamoDbTable', 'Arn'] },
           },
         ],
       },
