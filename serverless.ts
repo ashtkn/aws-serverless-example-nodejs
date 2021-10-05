@@ -6,6 +6,7 @@ const serverlessConfiguration: AWS = {
   frameworkVersion: '2',
   custom: {
     defaultStage: 'dev',
+    dynamoDbTableName: 'aws-serverless-example-nodejs-dynamodb-${self:provider.stage}',
     webpack: {
       webpackConfig: './webpack.config.js',
       includeModules: true,
@@ -23,6 +24,7 @@ const serverlessConfiguration: AWS = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+      DYNAMODB_TABLE_NAME: '${self:custom.dynamoDbTableName}'
     },
     lambdaHashingVersion: '20201221',
     iam: {
@@ -57,7 +59,7 @@ const serverlessConfiguration: AWS = {
             ReadCapacityUnits: 1,
             WriteCapacityUnits: 1,
           },
-          TableName: 'aws-serverless-example-nodejs-dynamodb-${self:provider.stage}',
+          TableName: '${self:custom.dynamoDbTableName}',
         },
       },
     },
