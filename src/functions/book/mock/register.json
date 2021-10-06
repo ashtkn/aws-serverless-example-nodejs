@@ -1,0 +1,6 @@
+{
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"isbn\": \"9784862760852\", \"title\": \"イシューからはじめよ\"}"
+}

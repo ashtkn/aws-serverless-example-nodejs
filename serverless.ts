@@ -1,4 +1,4 @@
-import { hello, hi } from '@functions/index'
+import { getBook, hello, hi, listBook, registerBook } from '@functions/index'
 import type { AWS } from '@serverless/typescript'
 
 const serverlessConfiguration: AWS = {
@@ -24,7 +24,7 @@ const serverlessConfiguration: AWS = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
-      DYNAMODB_TABLE_NAME: '${self:custom.dynamoDbTableName}'
+      DYNAMODB_TABLE_NAME: '${self:custom.dynamoDbTableName}',
     },
     lambdaHashingVersion: '20201221',
     iam: {
@@ -41,7 +41,7 @@ const serverlessConfiguration: AWS = {
     },
   },
   // import the function via paths
-  functions: { hello, hi },
+  functions: { hello, hi, getBook, listBook, registerBook },
   resources: {
     Resources: {
       DynamoDbTable: {
@@ -49,11 +49,11 @@ const serverlessConfiguration: AWS = {
         Properties: {
           AttributeDefinitions: [
             { AttributeName: 'isbn', AttributeType: 'S' },
-            { AttributeName: 'title', AttributeType: 'S' },
+            // { AttributeName: 'title', AttributeType: 'S' },
           ],
           KeySchema: [
             { AttributeName: 'isbn', KeyType: 'HASH' },
-            { AttributeName: 'title', KeyType: 'RANGE' },
+            //{ AttributeName: 'title', KeyType: 'RANGE' },
           ],
           ProvisionedThroughput: {
             ReadCapacityUnits: 1,
