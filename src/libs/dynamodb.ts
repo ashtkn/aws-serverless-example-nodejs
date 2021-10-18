@@ -3,7 +3,6 @@ import { DynamoDB } from 'aws-sdk'
 import { Book, BookSelectQuery } from './types'
 
 const dynamoDbTableName = process.env.DYNAMODB_TABLE_NAME || ''
-console.log('dynamoDbTableName', dynamoDbTableName)
 
 const client = new DynamoDB()
 
