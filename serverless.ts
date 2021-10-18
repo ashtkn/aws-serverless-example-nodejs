@@ -55,10 +55,11 @@ const serverlessConfiguration: AWS = {
             { AttributeName: 'isbn', KeyType: 'HASH' },
             //{ AttributeName: 'title', KeyType: 'RANGE' },
           ],
-          ProvisionedThroughput: {
-            ReadCapacityUnits: 1,
-            WriteCapacityUnits: 1,
-          },
+          // ProvisionedThroughput: {
+          //   ReadCapacityUnits: 1,
+          //   WriteCapacityUnits: 1,
+          // },
+          BillingMode: 'PAY_PER_REQUEST',
           TableName: '${self:custom.dynamoDbTableName}',
         },
       },
