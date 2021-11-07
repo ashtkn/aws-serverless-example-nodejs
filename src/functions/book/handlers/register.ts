@@ -1,6 +1,6 @@
 import 'source-map-support/register'
 
-import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/apiGateway'
+import { formatJSONResponse, ValidatedEventAPIGatewayProxyEvent } from '@libs/apiGateway'
 import { putBook } from '@libs/dynamodb'
 import { middyfy } from '@libs/lambda'
 import { Book } from '@libs/types'
@@ -11,21 +11,19 @@ const registerBook: ValidatedEventAPIGatewayProxyEvent<typeof registerBookSchema
   const { isbn, title } = event.body
   const book = Book.init({ isbn, title })
   if (!book) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({
+    return formatJSONResponse(
+      {
         message: `Invalid body: ${JSON.stringify(event.body)}`,
-      }),
-    }
+      },
+      400
+    )
   }
   await putBook(book)
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: `OK`,
-      book: book.toObject(),
-    }),
-  }
+
+  return formatJSONResponse({
+    message: `OK`,
+    book: book.toObject(),
+  })
 }
 
 export const main = middyfy(registerBook)

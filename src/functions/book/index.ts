@@ -9,6 +9,7 @@ export const listBook = {
       http: {
         method: 'get',
         path: 'book/list',
+        cors: true,
       },
     },
   ],
@@ -21,6 +22,7 @@ export const getBook = {
       http: {
         method: 'get',
         path: 'book/get',
+        cors: true,
         request: {
           parameters: {
             querystrings: {
@@ -40,6 +42,7 @@ export const registerBook = {
       http: {
         method: 'post',
         path: 'book/register',
+        cors: true,
         request: {
           schemas: {
             'application/json': registerBookSchema,
