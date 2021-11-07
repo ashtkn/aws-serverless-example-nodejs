@@ -9,7 +9,7 @@ const listBook: APIGatewayProxyHandler = async () => {
   const books = await scanAllBooks()
   return formatJSONResponse({
     message: 'OK',
-    books: books.map((e) => e.toObject()),
+    books,
   })
 }
 

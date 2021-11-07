@@ -26,7 +26,7 @@ const getBook: APIGatewayProxyHandler = async (event) => {
   }
   return formatJSONResponse({
     message: 'OK',
-    book: book.toObject(),
+    book,
   })
 }
 

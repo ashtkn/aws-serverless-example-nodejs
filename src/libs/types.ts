@@ -17,7 +17,7 @@ export class Book {
   get title(): BookTitle {
     return this._title
   }
-  toObject(): { isbn: BookIsbn; title: BookTitle } {
+  toJSON(): { isbn: BookIsbn; title: BookTitle } {
     return { isbn: this._isbn, title: this._title }
   }
 

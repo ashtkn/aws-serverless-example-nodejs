@@ -22,7 +22,7 @@ const registerBook: ValidatedEventAPIGatewayProxyEvent<typeof registerBookSchema
 
   return formatJSONResponse({
     message: `OK`,
-    book: book.toObject(),
+    book,
   })
 }
 
